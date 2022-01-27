@@ -7,6 +7,7 @@ use InvalidArgumentException;
 
 class CalculatorService
 {
+    public int $precision = 8;
     private array $orderPriority
         = [
             Operator::ADD => 1,
@@ -14,8 +15,6 @@ class CalculatorService
             Operator::MULTIPLY => 2,
             Operator::DIVIDE => 2,
         ];
-
-    public int $precision = 8;
 
     public function performCalculation(array $numbers, array $operators): int|float
     {

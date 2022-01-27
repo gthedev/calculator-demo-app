@@ -11,13 +11,6 @@ class DivisionTest extends TestCase
 {
     private OperationInterface $operation;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->operation = resolve(Division::class);
-    }
-
     public function validResultsProvider(): array
     {
         return [
@@ -41,5 +34,12 @@ class DivisionTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->operation->perform(50, 0);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->operation = resolve(Division::class);
     }
 }

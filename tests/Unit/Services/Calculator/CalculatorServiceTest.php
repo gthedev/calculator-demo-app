@@ -10,13 +10,6 @@ class CalculatorServiceTest extends TestCase
 {
     private CalculatorService $service;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->service = resolve(CalculatorService::class);
-    }
-
     public function validEquationsDataProvider(): array
     {
         return [
@@ -91,5 +84,12 @@ class CalculatorServiceTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $this->service->performCalculation($numbers, $operators);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->service = resolve(CalculatorService::class);
     }
 }

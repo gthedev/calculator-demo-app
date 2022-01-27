@@ -10,13 +10,6 @@ class SubtractionTest extends TestCase
 {
     private OperationInterface $operation;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->operation = resolve(Subtraction::class);
-    }
-
     public function validResultsProvider(): array
     {
         return [
@@ -37,5 +30,12 @@ class SubtractionTest extends TestCase
     public function test_it_performs_operation_correctly(float|int $a, float|int $b, float|int $result)
     {
         $this->assertEquals($result, $this->operation->perform($a, $b));
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->operation = resolve(Subtraction::class);
     }
 }

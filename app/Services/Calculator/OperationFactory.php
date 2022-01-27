@@ -19,11 +19,6 @@ class OperationFactory
             Operator::DIVIDE => Division::class,
         ];
 
-    public static function supportedOperators(): array
-    {
-        return array_keys(self::$classMap);
-    }
-
     public static function make(string $operator): OperationInterface
     {
         if (!in_array($operator, self::supportedOperators())) {
@@ -35,5 +30,10 @@ class OperationFactory
         // in certain cases you may want to cache the objects for performance
         // for expensive operations
         return resolve(self::$classMap[$operator]);
+    }
+
+    public static function supportedOperators(): array
+    {
+        return array_keys(self::$classMap);
     }
 }

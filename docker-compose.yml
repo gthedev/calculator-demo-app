@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  app:
+    image: calculator-app
+    container_name: calculator-app
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - 8181:8080
+    volumes:
+      - .:/var/www/html
+    command: "php artisan serve --host=0.0.0.0 --port=8080"
+
+  composer:
+    image: calculator-app
+    container_name: calculator-app-composer
+    volumes:
+      - .:/var/www/html
+    entrypoint: [ 'composer' ]

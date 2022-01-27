@@ -34,6 +34,6 @@ class OperationFactory
         // In this case it really doesn't matter, but
         // in certain cases you may want to cache the objects for performance
         // for expensive operations
-        return new (static::$classMap[$operator]);
+        return resolve(self::$classMap[$operator]);
     }
 }
